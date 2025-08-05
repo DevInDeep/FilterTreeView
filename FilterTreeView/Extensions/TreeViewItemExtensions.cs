@@ -10,5 +10,11 @@ namespace FilterTreeView.Extensions
             treeViewItem.Height = Double.NaN;
             treeViewItem.IsExpanded = true;
         }
+        internal static string GetHeaderOrEmpty(this TreeViewItem treeViewItem)
+        {
+            string? header = treeViewItem.Header as string;
+            if (header == null) return string.Empty;
+            return header;
+        }
     }
 }
