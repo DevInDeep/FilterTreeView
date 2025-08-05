@@ -24,5 +24,11 @@ namespace FilterTreeView.Extensions
                 }
             }
         }
+
+        internal static void FilterBy(this ItemCollection collection, Func<TreeViewItem, bool> filter)
+        {
+            collection.Do<TreeViewItem>(item => item.Collapse());
+            collection.Where<TreeViewItem>(filter).Do(item => item.Expand());
+        }
     }
 }
